@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:wan_flutter/models/api_response.dart';
 import 'package:wan_flutter/models/article_item.dart';
 import 'package:wan_flutter/models/articles_tree_item.dart';
+import 'package:wan_flutter/utils/log_utils.dart';
 
 class ApiService {
   final String baseUrl = "https://www.wanandroid.com";
@@ -17,6 +18,32 @@ class ApiService {
 
   final dio = Dio();
 
+  void printResponse(Response<dynamic> response, {bool chunk = false}) {
+    LogUtils.logRed("request start 👇");
+    LogUtils.log("url: ${response.requestOptions.path}");
+    if (response.requestOptions.data != null) {
+      debugPrint("data: ${response.requestOptions.data}");
+    }
+    if (response.requestOptions.headers.isNotEmpty) {
+      LogUtils.logYellow("headers: ${response.requestOptions.headers}");
+    }
+    LogUtils.logRed("request end 👆");
+
+    LogUtils.logRed("response start 👇");
+    if (chunk) {
+      LogUtils.logChunk("${response.data}");
+    } else {
+      LogUtils.log("${response.data}");
+    }
+    if (response.extra.isNotEmpty) {
+      debugPrint("extra: ${response.extra}");
+    }
+    if (response.headers.map.isNotEmpty) {
+      LogUtils.logYellow("headers: ${response.headers.map}");
+    }
+    LogUtils.logRed("response end 👆");
+  }
+
   Future<List<ArticlesTreeItem>> getProjectTree() async {
     debugPrint("fetch getProjectTree");
 
@@ -24,6 +51,8 @@ class ApiService {
 
     Response result = await dio.get(path);
     // string = result.data.toString();
+
+    printResponse(result);
 
     // json 转换 接口返回数据格式
     ApiResponse<List<ArticlesTreeItem>> response =
@@ -52,6 +81,9 @@ class ApiService {
       baseUrl + projectListUrl.replaceAll("{page}", page),
       queryParameters: {"cid": cid, "page_size": 10},
     );
+
+    printResponse(response);
+
     dynamic data = response.data['data'];
     List<dynamic> list = data['datas'];
     // 解析 list 里 item 的对象
@@ -72,20 +104,7 @@ class ApiService {
               "testKey": "testValue",
             }));
 
-    debugPrint("request: ${response.requestOptions.path})");
-    if (response.requestOptions.data != null) {
-      debugPrint("request data: ${response.requestOptions.data}");
-    }
-    if (response.requestOptions.headers.isNotEmpty) {
-      debugPrint("request headers: ${response.requestOptions.headers}");
-    }
-    debugPrint("response: ${response.data})");
-    if (response.extra.isNotEmpty) {
-      debugPrint("response extra: ${response.extra})");
-    }
-    if (response.headers.map.isNotEmpty) {
-      debugPrint("response headers: ${response.headers.map})");
-    }
+    printResponse(response);
 
     dynamic data = response.data['data'];
     List<dynamic> list = data['datas'];
@@ -103,6 +122,8 @@ class ApiService {
     var path = baseUrl + subscribeTree;
 
     Response result = await dio.get(path);
+
+    printResponse(result);
 
     // json 转换 接口返回数据格式
     ApiResponse<List<ArticlesTreeItem>> response =
@@ -127,6 +148,9 @@ class ApiService {
           subscribeListUrl.replaceAll("{id}", id).replaceAll("{page}", page),
       queryParameters: {"page_size": 10},
     );
+
+    printResponse(response);
+
     dynamic data = response.data['data'];
     List<dynamic> list = data['datas'];
     // 解析 list 里 item 的对象
