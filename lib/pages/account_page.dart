@@ -19,6 +19,7 @@ class _AccountState extends State<AccountPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
       // margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       color: MyColor.wxBackground,

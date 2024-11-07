@@ -14,7 +14,9 @@ class _HomeState extends State<HomePage>
   bool get wantKeepAlive => true;
 
   @override
-  Widget build(BuildContext context) => Container(
+  Widget build(BuildContext context) {
+    super.build(context);
+    return Container(
         margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         color: MyColor.wxBackground,
         child: const Column(
@@ -24,4 +26,5 @@ class _HomeState extends State<HomePage>
           ],
         ),
       );
+  }
 }
