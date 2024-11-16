@@ -12,8 +12,7 @@ class SubscribePage extends StatefulWidget {
   State createState() => _SubscribeState();
 }
 
-class _SubscribeState extends State<SubscribePage>
-    with AutomaticKeepAliveClientMixin {
+class _SubscribeState extends State<SubscribePage> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 

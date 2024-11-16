@@ -12,8 +12,7 @@ class ProjectPage extends StatefulWidget {
   State createState() => _ProjectState();
 }
 
-class _ProjectState extends State<ProjectPage>
-    with AutomaticKeepAliveClientMixin {
+class _ProjectState extends State<ProjectPage> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 

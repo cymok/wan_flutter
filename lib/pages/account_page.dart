@@ -12,8 +12,7 @@ class AccountPage extends StatefulWidget {
   State createState() => _AccountState();
 }
 
-class _AccountState extends State<AccountPage>
-    with AutomaticKeepAliveClientMixin {
+class _AccountState extends State<AccountPage> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -55,30 +54,26 @@ class _AccountState extends State<AccountPage>
                         SizedBox(height: 50),
                         Text(
                           "未登录",
-                          style: TextStyle(
-                              fontSize: 18, color: MyColor.primaryText),
+                          style: TextStyle(fontSize: 18, color: MyColor.primaryText),
                         ),
                         SizedBox(height: 15),
                         Row(
                           children: [
                             Text(
                               "用户名: null",
-                              style: TextStyle(
-                                  fontSize: 14, color: MyColor.secondaryText),
+                              style: TextStyle(fontSize: 14, color: MyColor.secondaryText),
                             ),
                             SizedBox(width: 15),
                             Text(
                               "id: -1",
-                              style: TextStyle(
-                                  fontSize: 14, color: MyColor.secondaryText),
+                              style: TextStyle(fontSize: 14, color: MyColor.secondaryText),
                             ),
                           ],
                         ),
                         SizedBox(height: 15),
                         Text(
                           "邮箱: null",
-                          style: TextStyle(
-                              fontSize: 14, color: MyColor.secondaryText),
+                          style: TextStyle(fontSize: 14, color: MyColor.secondaryText),
                         ),
                         SizedBox(height: 50),
                       ],
@@ -116,20 +111,17 @@ class _AccountState extends State<AccountPage>
                     SizedBox(width: 20),
                     Text(
                       "积分排行",
-                      style:
-                          TextStyle(fontSize: 16, color: MyColor.primaryText),
+                      style: TextStyle(fontSize: 16, color: MyColor.primaryText),
                     ),
                     Spacer(flex: 1),
                     Text(
                       "积分: 1234",
-                      style:
-                          TextStyle(fontSize: 14, color: MyColor.secondaryText),
+                      style: TextStyle(fontSize: 14, color: MyColor.secondaryText),
                     ),
                     SizedBox(width: 10),
                     Text(
                       "排行: 2345",
-                      style:
-                          TextStyle(fontSize: 14, color: MyColor.secondaryText),
+                      style: TextStyle(fontSize: 14, color: MyColor.secondaryText),
                     ),
                     SizedBox(width: 10),
                     Image.asset(
@@ -163,14 +155,12 @@ class _AccountState extends State<AccountPage>
                     SizedBox(width: 20),
                     Text(
                       "收藏文章",
-                      style:
-                          TextStyle(fontSize: 16, color: MyColor.primaryText),
+                      style: TextStyle(fontSize: 16, color: MyColor.primaryText),
                     ),
                     Spacer(flex: 1),
                     Text(
                       "收藏量: 99 篇",
-                      style:
-                          TextStyle(fontSize: 14, color: MyColor.secondaryText),
+                      style: TextStyle(fontSize: 14, color: MyColor.secondaryText),
                     ),
                     SizedBox(width: 10),
                     Image.asset(
@@ -204,8 +194,7 @@ class _AccountState extends State<AccountPage>
                     SizedBox(width: 20),
                     Text(
                       "分享文章",
-                      style:
-                          TextStyle(fontSize: 16, color: MyColor.primaryText),
+                      style: TextStyle(fontSize: 16, color: MyColor.primaryText),
                     ),
                     Spacer(flex: 1),
                     Image.asset(
@@ -239,8 +228,7 @@ class _AccountState extends State<AccountPage>
                     SizedBox(width: 20),
                     Text(
                       "收藏网站",
-                      style:
-                          TextStyle(fontSize: 16, color: MyColor.primaryText),
+                      style: TextStyle(fontSize: 16, color: MyColor.primaryText),
                     ),
                     Spacer(flex: 1),
                     Image.asset(
@@ -284,8 +272,7 @@ class _AccountState extends State<AccountPage>
                     SizedBox(width: 20),
                     Text(
                       "设置",
-                      style:
-                          TextStyle(fontSize: 16, color: MyColor.primaryText),
+                      style: TextStyle(fontSize: 16, color: MyColor.primaryText),
                     ),
                     Spacer(flex: 1),
                     Image.asset(

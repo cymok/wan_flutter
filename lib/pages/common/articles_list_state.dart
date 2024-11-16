@@ -4,8 +4,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan_flutter/models/article_item.dart';
 import 'package:wan_flutter/providers/common/articles_list_provider.dart';
 
-class ArticlesListState<W extends StatefulWidget,
-        T extends ArticlesListProvider> extends State<StatefulWidget>
+class ArticlesListState<W extends StatefulWidget, T extends ArticlesListProvider> extends State<StatefulWidget>
     with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;

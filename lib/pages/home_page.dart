@@ -8,8 +8,7 @@ class HomePage extends StatefulWidget {
   State createState() => _HomeState();
 }
 
-class _HomeState extends State<HomePage>
-    with AutomaticKeepAliveClientMixin {
+class _HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -17,14 +16,14 @@ class _HomeState extends State<HomePage>
   Widget build(BuildContext context) {
     super.build(context);
     return Container(
-        margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        color: MyColor.wxBackground,
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("推荐"),
-          ],
-        ),
-      );
+      margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      color: MyColor.wxBackground,
+      child: const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("推荐"),
+        ],
+      ),
+    );
   }
 }
