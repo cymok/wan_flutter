@@ -32,7 +32,7 @@ android {
     // 再指向 `<Flutter SDK>/packages/flutter_tools/gradle/src/main/groovy/flutter.groovy`
 //    compileSdkVersion flutter.compileSdkVersion
 //    ndkVersion flutter.ndkVersion
-    compileSdkVersion 34
+    compileSdkVersion 35
     ndkVersion '27.2.12479018'
 
     compileOptions {
@@ -55,7 +55,7 @@ android {
 //        versionCode flutterVersionCode.toInteger()
 //        versionName flutterVersionName
         minSdkVersion 21
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode 1
         versionName '1.0'
     }
