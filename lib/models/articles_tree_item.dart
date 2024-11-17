@@ -1,18 +1,33 @@
 class ArticlesTreeItem {
+  String? author;
+  num? courseId;
+  String? cover;
+  String? desc;
+  num? id;
+  String? lisense;
+  String? lisenseLink;
+  String? name;
+  num? order;
+  num? parentChapterId;
+  num? type;
+  bool? userControlSetTop;
+  num? visible;
+
   ArticlesTreeItem({
-      this.author,
-      this.courseId,
-      this.cover, 
-      this.desc, 
-      this.id, 
-      this.lisense, 
-      this.lisenseLink, 
-      this.name, 
-      this.order, 
-      this.parentChapterId, 
-      this.type, 
-      this.userControlSetTop, 
-      this.visible,});
+    this.author,
+    this.courseId,
+    this.cover,
+    this.desc,
+    this.id,
+    this.lisense,
+    this.lisenseLink,
+    this.name,
+    this.order,
+    this.parentChapterId,
+    this.type,
+    this.userControlSetTop,
+    this.visible,
+  });
 
   ArticlesTreeItem.fromJson(dynamic json) {
     author = json['author'];
@@ -29,19 +44,6 @@ class ArticlesTreeItem {
     userControlSetTop = json['userControlSetTop'];
     visible = json['visible'];
   }
-  String? author;
-  num? courseId;
-  String? cover;
-  String? desc;
-  num? id;
-  String? lisense;
-  String? lisenseLink;
-  String? name;
-  num? order;
-  num? parentChapterId;
-  num? type;
-  bool? userControlSetTop;
-  num? visible;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -60,5 +62,4 @@ class ArticlesTreeItem {
     map['visible'] = visible;
     return map;
   }
-
 }

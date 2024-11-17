@@ -4,6 +4,7 @@ import 'package:wan_flutter/common/my_color.dart';
 import 'package:wan_flutter/pages/project_tab_page.dart';
 import 'package:wan_flutter/providers/project_provider.dart';
 import 'package:wan_flutter/providers/project_tab_provider.dart';
+import 'package:wan_flutter/providers/project_tab_provider_new.dart';
 
 class ProjectPage extends StatefulWidget {
   const ProjectPage({super.key});
@@ -55,30 +56,37 @@ class _ProjectState extends State<ProjectPage> with AutomaticKeepAliveClientMixi
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TabBar(
-                  // controller: ,
-                  isScrollable: true,
-                  // indicatorPadding: EdgeInsets.zero, // 去掉指示器的空白
-                  // labelPadding: EdgeInsets.zero,     // 去掉标签的空白
-                  tabs: provider.tabList.map((e) => Tab(text: e.name)).toList(),
+                ColoredBox(
+                  color: Colors.white,
+                  child: TabBar(
+                    // controller: ,
+                    isScrollable: true,
+                    // indicatorPadding: EdgeInsets.zero, // 去掉指示器的空白
+                    // labelPadding: EdgeInsets.zero,     // 去掉标签的空白
+                    tabs: provider.tabList.map((e) => Tab(text: e.name)).toList(),
+                  ),
                 ),
                 Expanded(
-                  child: TabBarView(
-                    children:
-                        // provider.tabList.map((e) => myTabPager(e)).toList()
-                        provider.tabList.map((e) {
-                      var cid = "${e.id}";
-                      return Center(
-                        // test
-                        // child: Text("${e.name}"),
-                        child: ChangeNotifierProvider(
-                          create: (_) {
-                            return ProjectTabProvider(cid);
-                          },
-                          child: ProjectTabPage(tabId: cid),
-                        ),
-                      );
-                    }).toList(),
+                  child: ColoredBox(
+                    color: MyColor.wxBackground,
+                    child: TabBarView(
+                      children:
+                          // provider.tabList.map((e) => myTabPager(e)).toList()
+                          provider.tabList.map((e) {
+                        var cid = "${e.id}";
+                        return Center(
+                          // test
+                          // child: Text("${e.name}"),
+                          child: ChangeNotifierProvider(
+                            create: (_) {
+                              // return ProjectTabProvider(cid);
+                              return ProjectTabProviderNew(cid);
+                            },
+                            child: ProjectTabPage(tabId: cid),
+                          ),
+                        );
+                      }).toList(),
+                    ),
                   ),
                 ),
               ],

@@ -254,7 +254,7 @@ class _AccountState extends State<AccountPage> with AutomaticKeepAliveClientMixi
                       // 处理页面返回结果
                       if (result != null)
                         {
-                          ToastUtils.show(result),
+                          // ToastUtils.show(result),
                         }
                     });
               },

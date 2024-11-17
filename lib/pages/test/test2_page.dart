@@ -66,17 +66,17 @@ class _Test2State extends State<Test2Page>
               ),
             ),
             const SizedBox(height: 50),
-            GestureDetector(
+            GestureDetector( // 无 涟漪效果
               onTap: () {
                 ToastUtils.show("GestureDetector");
               },
-              child: const Text("GestureDetector"),
+              child: const Text("GestureDetector 无 涟漪效果"),
             ),
-            InkWell(
+            InkWell( // 有 涟漪效果
               onTap: () {
                 ToastUtils.show("InkWell");
               },
-              child: const Text("InkWell"),
+              child: const Text("InkWell 有 涟漪效果"),
             ),
             FilledButton(
               style: const ButtonStyle(

@@ -55,30 +55,36 @@ class _SubscribeState extends State<SubscribePage> with AutomaticKeepAliveClient
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TabBar(
-                  // controller: ,
-                  isScrollable: true,
-                  // indicatorPadding: EdgeInsets.zero, // 去掉指示器的空白
-                  // labelPadding: EdgeInsets.zero,     // 去掉标签的空白
-                  tabs: provider.tabList.map((e) => Tab(text: e.name)).toList(),
+                ColoredBox(
+                  color: Colors.white,
+                  child: TabBar(
+                    // controller: ,
+                    isScrollable: true,
+                    // indicatorPadding: EdgeInsets.zero, // 去掉指示器的空白
+                    // labelPadding: EdgeInsets.zero,     // 去掉标签的空白
+                    tabs: provider.tabList.map((e) => Tab(text: e.name)).toList(),
+                  ),
                 ),
                 Expanded(
-                  child: TabBarView(
-                    children:
-                        // provider.tabList.map((e) => myTabPager(e)).toList()
-                        provider.tabList.map((e) {
-                      var id = "${e.id}";
-                      return Center(
-                        // test
-                        // child: Text("${e.name}"),
-                        child: ChangeNotifierProvider(
-                          create: (_) {
-                            return SubscribeTabProvider(id);
-                          },
-                          child: SubscribeTabPage(tabId: id),
-                        ),
-                      );
-                    }).toList(),
+                  child: ColoredBox(
+                    color: MyColor.wxBackground,
+                    child: TabBarView(
+                      children:
+                          // provider.tabList.map((e) => myTabPager(e)).toList()
+                          provider.tabList.map((e) {
+                        var id = "${e.id}";
+                        return Center(
+                          // test
+                          // child: Text("${e.name}"),
+                          child: ChangeNotifierProvider(
+                            create: (_) {
+                              return SubscribeTabProvider(id);
+                            },
+                            child: SubscribeTabPage(tabId: id),
+                          ),
+                        );
+                      }).toList(),
+                    ),
                   ),
                 ),
               ],

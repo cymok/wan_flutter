@@ -9,10 +9,15 @@
 # packages, and plugins designed to encourage good coding practices.
 analyzer:
   errors:
+    # 类似指定 lint 的级别
+    avoid_unnecessary_containers: ignore
     prefer_const_constructors: ignore
+    prefer_const_constructors_in_immutables: ignore
     prefer_const_literals_to_create_immutables: ignore
     sized_box_for_whitespace: ignore
     unnecessary_brace_in_string_interps: ignore
+    unnecessary_this: ignore
+
 include: package:flutter_lints/flutter.yaml
 
 linter:

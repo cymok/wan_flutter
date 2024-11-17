@@ -11,6 +11,4 @@ class SubscribeTabPage extends StatefulWidget {
   State createState() => _SubscribeTabState();
 }
 
-class _SubscribeTabState extends ArticlesListState<SubscribeTabPage, SubscribeTabProvider> {
-
-}
+class _SubscribeTabState extends ArticlesListState<SubscribeTabPage, SubscribeTabProvider> {}

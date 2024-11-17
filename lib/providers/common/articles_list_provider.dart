@@ -27,15 +27,17 @@ abstract class ArticlesListProvider with ChangeNotifier {
 
     try {
       List<ArticleItem> list = await fetchArticlesList();
+      if (currentPage == firstPage) {
+        itemList.clear();
+      }
+      itemList.addAll(list);
 
       // todo
       // 每页条数跟接口保持一致，默认 10
       // 返回不一致的接口由子类修改 ignoreHasMoreData 去忽略
       if (list.length < 10 && !ignoreHasMoreData) {
-        itemList.addAll(list);
         hasMoreData = false;
       } else {
-        itemList.addAll(list);
         currentPage++;
       }
     } catch (e) {
@@ -48,7 +50,6 @@ abstract class ArticlesListProvider with ChangeNotifier {
 
   Future<void> refreshList() async {
     currentPage = firstPage;
-    itemList.clear();
     hasMoreData = true;
     await loadList(); // 重新加载第一页数据
   }

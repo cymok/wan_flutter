@@ -11,7 +11,7 @@ class SettingPage extends StatefulWidget {
 
 class _SettingState extends State<SettingPage> {
   void onBackPressed() {
-    Navigator.pop(context, "返回键");
+    Navigator.pop(context/*, "返回键"*/);
   }
 
   @override
@@ -42,6 +42,9 @@ class _SettingState extends State<SettingPage> {
         onBackPressed();
       },
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("设置"),
+        ),
         body: Container(
           // margin: EdgeInsets.only(top: MediaQuery
           //     .of(context)
@@ -57,7 +60,7 @@ class _SettingState extends State<SettingPage> {
                 child: Container(
                   color: MyColor.wxForeground,
                   alignment: Alignment.center,
-                  width: double.infinity,
+                  width: double.maxFinite,
                   padding: EdgeInsets.all(16),
                   child: Row(
                     children: [
@@ -88,7 +91,7 @@ class _SettingState extends State<SettingPage> {
                 child: Container(
                   color: MyColor.wxForeground,
                   alignment: Alignment.center,
-                  width: double.infinity,
+                  width: double.maxFinite,
                   padding: EdgeInsets.all(16),
                   child: Row(
                     children: [
@@ -119,7 +122,7 @@ class _SettingState extends State<SettingPage> {
                 child: Container(
                   color: MyColor.wxForeground,
                   alignment: Alignment.center,
-                  width: double.infinity,
+                  width: double.maxFinite,
                   padding: EdgeInsets.all(16),
                   child: Row(
                     children: [
@@ -150,7 +153,7 @@ class _SettingState extends State<SettingPage> {
                 child: Container(
                   color: MyColor.wxForeground,
                   alignment: Alignment.center,
-                  width: double.infinity,
+                  width: double.maxFinite,
                   padding: EdgeInsets.all(16),
                   child: Row(
                     children: [
@@ -181,7 +184,7 @@ class _SettingState extends State<SettingPage> {
                 child: Container(
                   color: MyColor.wxForeground,
                   alignment: Alignment.center,
-                  width: double.infinity,
+                  width: double.maxFinite,
                   padding: EdgeInsets.all(16),
                   child: Row(
                     children: [
@@ -212,7 +215,7 @@ class _SettingState extends State<SettingPage> {
                 child: Container(
                   color: MyColor.wxForeground,
                   alignment: Alignment.center,
-                  width: double.infinity,
+                  width: double.maxFinite,
                   padding: EdgeInsets.all(16),
                   child: Row(
                     children: [
@@ -238,7 +241,7 @@ class _SettingState extends State<SettingPage> {
                 child: Container(
                   color: MyColor.wxForeground,
                   alignment: Alignment.center,
-                  width: double.infinity,
+                  width: double.maxFinite,
                   padding: EdgeInsets.all(16),
                   child: Row(
                     children: [
@@ -264,7 +267,7 @@ class _SettingState extends State<SettingPage> {
                 child: Container(
                   color: MyColor.wxForeground,
                   alignment: Alignment.center,
-                  width: double.infinity,
+                  width: double.maxFinite,
                   padding: EdgeInsets.all(16),
                   child: Text(
                     "退出",

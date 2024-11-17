@@ -1,13 +1,11 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:wan_flutter/models/article_item.dart';
-import 'package:wan_flutter/models/api_response.dart';
-import 'package:wan_flutter/models/articles_tree_item.dart';
 import 'package:wan_flutter/services/api_service.dart';
 
 class ProjectTabProvider with ChangeNotifier {
   final String cid;
   List<ArticleItem> itemList = [];
+  int firstPage = 1;
   int currentPage = 1;
   bool isLoading = false;
   bool hasMoreData = true;
@@ -26,14 +24,15 @@ class ProjectTabProvider with ChangeNotifier {
     notifyListeners();
 
     try {
-      List<ArticleItem> list =
-          await _apiService.getProjectList(cid, currentPage.toString());
+      List<ArticleItem> list = await _apiService.getProjectList(cid, currentPage.toString());
+      if (currentPage == firstPage) {
+        itemList.clear();
+      }
+      itemList.addAll(list);
 
       if (list.length < 10) {
-        itemList.addAll(list);
         hasMoreData = false;
       } else {
-        itemList.addAll(list);
         currentPage++;
       }
     } catch (e) {
@@ -45,8 +44,7 @@ class ProjectTabProvider with ChangeNotifier {
   }
 
   Future<void> refreshList() async {
-    currentPage = 1;
-    itemList.clear();
+    currentPage = firstPage;
     hasMoreData = true;
     await loadList(); // 重新加载第一页数据
   }

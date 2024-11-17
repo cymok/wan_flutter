@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan_flutter/models/article_item.dart';
+import 'package:wan_flutter/pages/common/articles_list_item_widget.dart';
 import 'package:wan_flutter/providers/common/articles_list_provider.dart';
+import 'package:wan_flutter/utils/toast_utils.dart';
 
 class ArticlesListState<W extends StatefulWidget, T extends ArticlesListProvider> extends State<StatefulWidget>
     with AutomaticKeepAliveClientMixin {
@@ -71,17 +73,23 @@ class ArticlesListState<W extends StatefulWidget, T extends ArticlesListProvider
             enablePullUp: true,
             onRefresh: _onRefresh,
             onLoading: _onLoading,
-            child: ListView.builder(
+            child: ListView.separated(
+              // ListView.builder
+              // ListView.separated 可以在 ListView.builder 基础上在每个 Item 间隙/间隔 设置一个 Widget
               itemCount: list.length,
               itemBuilder: (BuildContext context, int index) {
                 var item = list[index];
-                return Container(
-                  width: double.maxFinite,
-                  height: 100,
-                  child: ListTile(
-                    title: Text('${item.title}'),
-                  ),
+                // item view
+                return ListItem(
+                  item: item,
+                  index: index,
+                  onClick: () {
+                    // todo
+                    ToastUtils.show("item link = ${item.link}");                  },
                 );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return SizedBox(height: 10);
               },
             ),
           ),
