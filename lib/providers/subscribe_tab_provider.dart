@@ -1,11 +1,11 @@
+import 'package:wan_flutter/api/services/wan_service.dart';
 import 'package:wan_flutter/models/article_item.dart';
 import 'package:wan_flutter/providers/common/articles_list_provider.dart';
-import 'package:wan_flutter/services/api_service.dart';
 
 class SubscribeTabProvider extends ArticlesListProvider {
   final String id;
 
-  final ApiService _apiService = ApiService();
+  final WanService _apiService = WanService();
 
   SubscribeTabProvider(this.id) {
     // loadList();
@@ -14,6 +14,6 @@ class SubscribeTabProvider extends ArticlesListProvider {
 
   @override
   Future<List<ArticleItem>> fetchArticlesList() {
-    return _apiService.getSubscribeList(id, currentPage.toString());
+    return _apiService.getSubscribeList(id, currentPage);
   }
 }

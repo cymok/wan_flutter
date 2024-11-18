@@ -46,7 +46,7 @@ class _ProjectState extends State<ProjectPage> with AutomaticKeepAliveClientMixi
   Widget build(BuildContext context) {
     super.build(context);
     return Consumer<ProjectProvider>(
-      builder: (_, provider, child) {
+      builder: (context, provider, child) {
         // print("tab len = ${provider.tabList.length}");
         return Container(
           margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),

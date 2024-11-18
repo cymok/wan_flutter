@@ -1,11 +1,11 @@
+import 'package:wan_flutter/api/services/wan_service.dart';
 import 'package:wan_flutter/models/article_item.dart';
 import 'package:wan_flutter/providers/common/articles_list_provider.dart';
-import 'package:wan_flutter/services/api_service.dart';
 
 class ProjectTabProviderNew extends ArticlesListProvider {
   final String cid;
 
-  final ApiService _apiService = ApiService();
+  final WanService _apiService = WanService();
 
   ProjectTabProviderNew(this.cid) {
     // loadList();
@@ -14,6 +14,6 @@ class ProjectTabProviderNew extends ArticlesListProvider {
 
   @override
   Future<List<ArticleItem>> fetchArticlesList() {
-    return _apiService.getProjectList(cid, currentPage.toString());
+    return _apiService.getProjectList(cid, currentPage);
   }
 }

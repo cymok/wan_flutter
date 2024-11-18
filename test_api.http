@@ -1,0 +1,12 @@
+
+### 登录
+POST https://www.wanandroid.com/user/login
+Content-Type: application/x-www-form-urlencoded
+
+username=yourusername&password=yourpassword
+
+### 获取用户信息
+GET https://www.wanandroid.com/user/lg/userinfo/json
+Cookie: JSESSIONID=99999999999999999999999999999999
+
+###

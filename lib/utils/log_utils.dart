@@ -20,6 +20,12 @@ class LogUtils {
     }
   }
 
+  static void logCyan(Object? object) {
+    if (kDebugMode) {
+      print('\x1B[36m$object\x1B[0m');
+    }
+  }
+
   static void logChunk(Object? object) {
     if (kDebugMode) {
       String message = object.toString();

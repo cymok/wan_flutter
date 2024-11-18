@@ -1,6 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wan_flutter/common/my_color.dart';
+import 'package:wan_flutter/providers/user_provider.dart';
 import 'package:wan_flutter/utils/toast_utils.dart';
+import 'package:wan_flutter/utils/user_utils.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -11,7 +15,7 @@ class SettingPage extends StatefulWidget {
 
 class _SettingState extends State<SettingPage> {
   void onBackPressed() {
-    Navigator.pop(context/*, "返回键"*/);
+    Navigator.pop(context /*, "返回键"*/);
   }
 
   @override
@@ -260,20 +264,55 @@ class _SettingState extends State<SettingPage> {
                 ),
               ),
               SizedBox(height: 10),
-              InkWell(
-                onTap: () {
-                  ToastUtils.show("退出");
+              // 退出按钮
+              FutureBuilder( // FutureBuilder 在 widget 使用异步数据
+                future: UserUtils.isLogin(),
+                builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                  // AsyncSnapshot 泛型对应 future
+                  if (snapshot.data != true) {
+                    return Container();
+                  } else {
+                    return InkWell(
+                      onTap: () {
+                        // 弹窗
+                        showCupertinoDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text("提示"),
+                                content: Text("要注销登录吗?"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); // 关闭弹窗
+                                    },
+                                    child: Text("取消"),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Provider.of<UserProvider>(context, listen: false).logout();
+                                      Navigator.of(context).pop(); // 关闭弹窗
+                                      Navigator.of(context).pop(); // 关闭页面
+                                    },
+                                    child: Text("确定"),
+                                  ),
+                                ],
+                              );
+                            });
+                      },
+                      child: Container(
+                        color: MyColor.wxForeground,
+                        alignment: Alignment.center,
+                        width: double.maxFinite,
+                        padding: EdgeInsets.all(16),
+                        child: Text(
+                          "退出",
+                          style: TextStyle(fontSize: 16, color: MyColor.primaryText),
+                        ),
+                      ),
+                    );
+                  }
                 },
-                child: Container(
-                  color: MyColor.wxForeground,
-                  alignment: Alignment.center,
-                  width: double.maxFinite,
-                  padding: EdgeInsets.all(16),
-                  child: Text(
-                    "退出",
-                    style: TextStyle(fontSize: 16, color: MyColor.primaryText),
-                  ),
-                ),
               ),
             ],
           ),

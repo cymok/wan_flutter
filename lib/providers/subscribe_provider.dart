@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:wan_flutter/api/services/wan_service.dart';
 import 'package:wan_flutter/models/articles_tree_item.dart';
-import 'package:wan_flutter/services/api_service.dart';
 
 class SubscribeProvider with ChangeNotifier {
-
   List<ArticlesTreeItem> tabList = [];
   bool loading = false;
 
-  final ApiService _apiService = ApiService();
+  final WanService _apiService = WanService();
 
   Future<void> getSubscribeTree() async {
     loading = true;
@@ -22,5 +21,4 @@ class SubscribeProvider with ChangeNotifier {
       notifyListeners();
     }
   }
-
 }

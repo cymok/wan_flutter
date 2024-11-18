@@ -7,6 +7,7 @@ import 'package:wan_flutter/providers/home_provider.dart';
 import 'package:wan_flutter/providers/project_provider.dart';
 import 'package:wan_flutter/providers/square_provider.dart';
 import 'package:wan_flutter/providers/subscribe_provider.dart';
+import 'package:wan_flutter/providers/user_provider.dart';
 
 void main() {
   // splash 初始化
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => SquareProvider()),
         ChangeNotifierProvider(create: (context) => SubscribeProvider()),
         ChangeNotifierProvider(create: (context) => AccountProvider()),
+        ChangeNotifierProvider(create: (context) => UserProvider()),
       ],
       child: MaterialApp(
         // 在 Debug 模式下 是否显示页面上的 DEBUG 标签

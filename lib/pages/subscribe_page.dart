@@ -45,7 +45,7 @@ class _SubscribeState extends State<SubscribePage> with AutomaticKeepAliveClient
   Widget build(BuildContext context) {
     super.build(context);
     return Consumer<SubscribeProvider>(
-      builder: (_, provider, child) {
+      builder: (context, provider, child) {
         // print("tab len = ${provider.tabList.length}");
         return Container(
           margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
@@ -55,6 +55,7 @@ class _SubscribeState extends State<SubscribePage> with AutomaticKeepAliveClient
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // tab
                 ColoredBox(
                   color: Colors.white,
                   child: TabBar(
@@ -65,6 +66,7 @@ class _SubscribeState extends State<SubscribePage> with AutomaticKeepAliveClient
                     tabs: provider.tabList.map((e) => Tab(text: e.name)).toList(),
                   ),
                 ),
+                // container
                 Expanded(
                   child: ColoredBox(
                     color: MyColor.wxBackground,

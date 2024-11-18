@@ -10,4 +10,9 @@ class SpUtils {
     final sp = await SharedPreferences.getInstance();
     sp.setString(key, value);
   }
+
+  static Future<void> remove(String key) async {
+    final sp = await SharedPreferences.getInstance();
+    sp.remove(key);
+  }
 }

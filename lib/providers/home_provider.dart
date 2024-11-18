@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:wan_flutter/api/services/wan_service.dart';
 import 'package:wan_flutter/models/article_item.dart';
 import 'package:wan_flutter/models/banner_item.dart';
-import 'package:wan_flutter/services/api_service.dart';
+import 'package:wan_flutter/utils/log_utils.dart';
 
 class HomeProvider with ChangeNotifier {
   List<BannerItem> bannerList = [];
@@ -16,7 +17,7 @@ class HomeProvider with ChangeNotifier {
     // 在 pull to refresh 的 initLoad 处理
   }
 
-  final ApiService _apiService = ApiService();
+  final WanService _apiService = WanService();
 
   Future<void> loadList() async {
     if (isLoading || !hasMoreData) return;
@@ -34,13 +35,13 @@ class HomeProvider with ChangeNotifier {
         this.bannerList = bannerList;
         // 列表
         List<ArticleItem> topList = await _apiService.getHomeTopList();
-        list = await _apiService.getHomeList(currentPage.toString());
+        list = await _apiService.getHomeList(currentPage);
         itemList.clear(); // 放在获取数据后，不然 UI 列表会短暂清空
         itemList.addAll(topList);
         itemList.addAll(list);
       } else {
         // 加载更多
-        list = await _apiService.getHomeList(currentPage.toString());
+        list = await _apiService.getHomeList(currentPage);
         itemList.addAll(list);
       }
 
@@ -50,7 +51,7 @@ class HomeProvider with ChangeNotifier {
         currentPage++;
       }
     } catch (e) {
-      print(e);
+      LogUtils.logRed(e);
     } finally {
       isLoading = false;
       notifyListeners();

@@ -49,11 +49,15 @@ class ListItem extends StatelessWidget {
               children: [
                 if (item.envelopePic != null && item.envelopePic!.isNotEmpty) ...[
                   // ... 是 Dart 的 集合展开操作符，可以用于将列表、集合或映射的内容插入到另一个集合中
-                  Image.network(
-                    item.envelopePic!,
-                    width: 100,
-                    height: 100,
-                    fit: BoxFit.cover,
+                  ClipRRect( // ClipRRect 实现圆角
+                    // borderRadius: BorderRadius.all(Radius.circular(10)), // BorderRadius.only 可以设置四个角
+                    borderRadius: BorderRadius.circular(10), // all
+                    child: Image.network(
+                      item.envelopePic!,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   SizedBox(width: 10),
                 ],
